@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_10ushyn" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="Process_1sf4ar2" name="Exceed Variable Limit" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="process&#10;started">
+      <bpmn:outgoing>Flow_10htph9</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_10htph9" sourceRef="StartEvent_1" targetRef="Activity_05xpyj4" />
+    <bpmn:sequenceFlow id="Flow_0tf0v1c" sourceRef="Activity_05xpyj4" targetRef="Event_137uvs6" />
+    <bpmn:endEvent id="Event_137uvs6" name="process&#10;completed">
+      <bpmn:incoming>Flow_0tf0v1c</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_05xpyj4" name="generate 4 MiB">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="generates4MiB" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10htph9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tf0v1c</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1sf4ar2">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="162" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="145" width="40" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mxn2tt_di" bpmnElement="Activity_05xpyj4">
+        <dc:Bounds x="250" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_137uvs6_di" bpmnElement="Event_137uvs6">
+        <dc:Bounds x="432" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="425" y="145" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_10htph9_di" bpmnElement="Flow_10htph9">
+        <di:waypoint x="198" y="120" />
+        <di:waypoint x="250" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tf0v1c_di" bpmnElement="Flow_0tf0v1c">
+        <di:waypoint x="350" y="120" />
+        <di:waypoint x="432" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
